@@ -21,8 +21,9 @@
             </div>
             <ul id="bookList" class="list-group">
                 @foreach($books as $book)
-                    <li class="list-group-item">Book Name: {{ $book->title }}
-                        <div class="">Publication Year: {{$book->pub_year}}</div>
+                    <li class="list-group-item">
+                        <div>Book Name: {{ $book->title }}</div>
+                        <div>Publication Year: {{ $book->pub_year }}</div>
                     </li>
                 @endforeach
             </ul>
@@ -48,7 +49,11 @@
         bookList.innerHTML = '';
         books.forEach(book => {
             let li = document.createElement('li');
-            li.textContent = book.title;
+            li.className = 'list-group-item';
+            li.innerHTML = `
+                <div>Book Name: ${book.title}</div>
+                <div>Publication Year: ${book.pub_year}</div>
+            `;
             bookList.appendChild(li);
         });
     }
